@@ -3,9 +3,9 @@ public class Transaction {
     private String name;
     private String memo;
 
-    public Transaction(float amount, String name, String memo) {
-        this.amount = amount;
+    public Transaction(String name, float amount, String memo) {
         this.name = name;
+        this.amount = amount;
         this.memo = memo;
     }
 
@@ -21,15 +21,15 @@ public class Transaction {
         return (memo);
     }
 
-    public void set_amount(float amount){
+    public void set_amount(float amount) {
         this.amount = amount;
     }
 
-    public void set_name(String name){
+    public void set_name(String name) {
         this.name = name;
     }
 
-    public void set_memo(String memo){
+    public void set_memo(String memo) {
         this.memo = memo;
     }
 }

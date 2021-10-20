@@ -18,6 +18,8 @@ class Main {
             break;
         case 2:
             System.out.println("Input");
+            Transaction myTrans = new Transaction("test", 12,"test");
+            System.out.println(myTrans.get_name());
             break;
         case 3:
             System.out.println("View");
