@@ -19,7 +19,6 @@ public class Portfolio {
         float netPay;
         System.out.println("Potfolio Set Up");
         System.out.println("Enter Portfolio Name:");
-        System.out.println("");
         name = sc.nextLine();
         System.out.println("Enter Portfolio Description:");
         description = sc.nextLine();

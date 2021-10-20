@@ -27,16 +27,11 @@ public class Menu {
         menuButtons[buttonNumber] = menuButtons[buttonNumber] + title;
     }
 
-    public int printAndReturnInput() {
+    public void print() {
         System.out.println(displayHeader);
         for (int i = 0; i < numOfChoices; i++) {
             System.out.println(menuButtons[i]);
         }
         System.out.println("0) Exit");
-        System.out.println("Select Choice: ");
-        Scanner userInput = new Scanner(System.in);
-        int userChoice = userInput.nextInt();
-        userInput.close();
-        return (userChoice);
     }
 }
