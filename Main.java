@@ -13,7 +13,7 @@ class Main {
         switch (userSelection) {
         case 1:
             System.out.println("Set up");
-            Portfolio myPortfolio = Portfolio.userSetup();
+            Portfolio myPortfolio = Portfolio.userSetup(sc);
             myPortfolio.print();
             break;
         case 2:
