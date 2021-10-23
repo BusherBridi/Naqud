@@ -1,10 +1,13 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Portfolio {
 
     private String name;
     private String description;
     private float netPay;
+    private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+    private int currentTransactionID = 0;
 
     // Constructor(String name, string description, float netpay)
     public Portfolio(String name, String description, float netPay) {
@@ -13,18 +16,17 @@ public class Portfolio {
         this.netPay = netPay;
     }
 
-    public static Portfolio userSetup() {
-        Scanner sc = new Scanner(System.in);
+    public static Portfolio userSetup(Scanner sc) {
         String name, description;
         float netPay;
         System.out.println("Potfolio Set Up");
         System.out.println("Enter Portfolio Name:");
+        sc.nextLine();
         name = sc.nextLine();
         System.out.println("Enter Portfolio Description:");
         description = sc.nextLine();
         System.out.println("Enter net pay:");
         netPay = sc.nextFloat();
-        sc.close();
         Portfolio returnPortfolio = new Portfolio(name, description, netPay);
         return (returnPortfolio);
     }
@@ -39,6 +41,10 @@ public class Portfolio {
 
     public float get_netPay() {
         return (netPay);
+    }
+
+    public ArrayList<Transaction> get_allTransactions() {
+        return (transactions);
     }
 
     public void set_name(String name) {
@@ -59,4 +65,13 @@ public class Portfolio {
         System.out.println("---------------------------------");
     }
 
+    public void addTransaction(String name, float amount, String memo) {
+        transactions.add(new Transaction(name, amount, memo, this, currentTransactionID));
+        currentTransactionID++; // Ensures that each transaction object related to this potfolio object has a
+                                // unique ID
+    }
+
+    public float calculateFutureBalance(int months) {
+        return (netPay * months);
+    }
 }

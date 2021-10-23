@@ -13,13 +13,11 @@ class Main {
         switch (userSelection) {
         case 1:
             System.out.println("Set up");
-            Portfolio myPortfolio = Portfolio.userSetup();
+            Portfolio myPortfolio = Portfolio.userSetup(sc);
             myPortfolio.print();
             break;
         case 2:
             System.out.println("Input");
-            Transaction myTrans = new Transaction("test", 12,"test");
-            System.out.println(myTrans.get_name());
             break;
         case 3:
             System.out.println("View");
