@@ -72,6 +72,13 @@ public class Portfolio {
     }
 
     public float calculateFutureBalance(int months) {
-        return (netPay * months);
+        float totalPay = netPay * months;
+        float totalExpense = 0, finalTotal = 0;
+        for (Transaction transaction : transactions) {
+            totalExpense += transaction.get_amount();
+        }
+        totalExpense *= months;
+        finalTotal = totalPay - totalExpense;
+        return (finalTotal);
     }
 }
