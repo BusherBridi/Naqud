@@ -5,7 +5,7 @@ public class Portfolio {
 
     private String name;
     private String description;
-    private float netPay;
+    private RecurringTransaction netPay;
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private int currentTransactionID = 0;
     private float total = 0;
@@ -14,11 +14,9 @@ public class Portfolio {
     public Portfolio(String name, String description, float netPay) {
         this.name = name;
         this.description = description;
-        this.netPay = netPay;
-    }
-
-    public Portfolio(String name, float netPay) {
-        this(name, "", netPay);
+        this.netPay = new RecurringTransaction("Income", netPay, "Net Income Pay", this, currentTransactionID, 1);
+        transactions.add(this.netPay);
+        currentTransactionID++;
     }
 
     public static Portfolio userSetup(Scanner sc) {
@@ -45,7 +43,7 @@ public class Portfolio {
     }
 
     public float get_netPay() {
-        return (netPay);
+        return (netPay.get_amount());
     }
 
     public ArrayList<Transaction> get_allTransactions() {
@@ -61,12 +59,13 @@ public class Portfolio {
     }
 
     public void set_netPay(float netPay) {
-        this.netPay = netPay;
+        this.netPay.set_amount(netPay);
     }
 
     public void print() {
         System.out.println("---------------------------------");
-        System.out.printf("Name: %s\nDescription: %s\nNet Pay: %f\n", this.name, this.description, this.netPay);
+        System.out.printf("Name: %s\nDescription: %s\nNet Pay: %f\n", this.name, this.description,
+                this.netPay.get_amount());
         System.out.println("---------------------------------");
         System.out.println("Transactions:");
         for (Transaction transaction : transactions) {
@@ -95,15 +94,13 @@ public class Portfolio {
     }
 
     public float calculateFutureBalance(int months) {
-        float totalPay = netPay * months;
-        float totalExpense = 0, finalTotal = 0;
+        float total = 0;
         for (Transaction transaction : transactions) {
             if (transaction instanceof RecurringTransaction) {
-                totalExpense += transaction.get_amount();
+                total += transaction.get_amount();
             }
         }
-        totalExpense *= months;
-        finalTotal = totalPay + totalExpense;
-        return (finalTotal);
+        return (total * months);
+
     }
 }
