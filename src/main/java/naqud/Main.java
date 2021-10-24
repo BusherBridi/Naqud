@@ -1,3 +1,5 @@
+package src.main.java.naqud;
+
 import java.util.Scanner;
 
 class Main {
@@ -8,11 +10,13 @@ class Main {
         mainMenu.set_menuButtonTitle(1, "Input");
         mainMenu.set_menuButtonTitle(2, "View");
 
-        Portfolio myPortfolio = new Portfolio("Test", "test portfolio", 6000);
-        myPortfolio.addTransaction("rent", 1800, "Rent money");
-        myPortfolio.addTransaction("Groceries", 200, "gotta eat");
-        myPortfolio.addTransaction("Investments", 500, "workday.inc");
+        Portfolio myPortfolio = new Portfolio("Test", "memo", 6000);
+        myPortfolio.addTransaction("rent", -1800, "Rent money");
+        myPortfolio.addTransaction("Groceries", -200, "gotta eat");
+        myPortfolio.addTransaction("Investments", -500, "workday.inc");
+        myPortfolio.addRecurringTransaction("Debt", -100, "memo", 1);
         System.out.printf("total expense: %f\n", myPortfolio.calculateFutureBalance(4));
+        // myPortfolio.print();
         // mainMenu.print();
         // Menu Logic:
         // int userSelection = sc.nextInt();

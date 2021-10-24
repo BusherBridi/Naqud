@@ -1,3 +1,5 @@
+package src.main.java.naqud;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
