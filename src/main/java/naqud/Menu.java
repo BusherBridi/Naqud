@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package src.main.java.naqud;
 
 public class Menu {
     String displayHeader;

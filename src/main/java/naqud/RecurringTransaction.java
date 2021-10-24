@@ -1,3 +1,5 @@
+package src.main.java.naqud;
+
 public class RecurringTransaction extends Transaction {
     private int recurrancePeriod;
 
@@ -6,5 +8,9 @@ public class RecurringTransaction extends Transaction {
         super(name, amount, memo, portfolio, id);
         this.recurrancePeriod = recurrancePeriod;
 
+    }
+
+    public int get_recurrance() {
+        return (recurrancePeriod);
     }
 }
