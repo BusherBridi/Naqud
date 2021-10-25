@@ -1,4 +1,3 @@
-package src.main.java.naqud;
 
 public class Menu {
     String displayHeader;

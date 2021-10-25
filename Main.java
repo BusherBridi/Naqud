@@ -1,5 +1,3 @@
-package src.main.java.naqud;
-
 import java.util.Scanner;
 
 class Main {
@@ -16,6 +14,13 @@ class Main {
         myPortfolio.addTransaction("Investments", -500, "workday.inc");
         myPortfolio.addRecurringTransaction("Debt", -100, "memo", 1);
         System.out.printf("total expense: %f\n", myPortfolio.calculateFutureBalance(4));
+
+        // PrettyTable table = new PrettyTable("Firstname", "Lastname", "Email",
+        // "Phone");
+        // table.addRow("John", "Doe", "johndoe@nothing.com", "+2137999999");
+        // table.addRow("Jane", "Doe", "janedoe@nothin.com", "+2137999999");
+        // System.out.println(table);
+
         // myPortfolio.print();
         // mainMenu.print();
         // Menu Logic:
