@@ -1,7 +1,12 @@
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 class Main {
+
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
         Menu mainMenu = new Menu("Main Menu", 3);
         mainMenu.set_menuButtonTitle(0, "Set up");
@@ -14,7 +19,7 @@ class Main {
         myPortfolio.addTransaction("Investments", -500, "workday.inc");
         myPortfolio.addRecurringTransaction("Debt", -100, "memo", 1);
         System.out.printf("total expense: %f\n", myPortfolio.calculateFutureBalance(4));
-
+        writeToFile("output", myPortfolio);
         // PrettyTable table = new PrettyTable("Firstname", "Lastname", "Email",
         // "Phone");
         // table.addRow("John", "Doe", "johndoe@nothing.com", "+2137999999");
@@ -44,6 +49,19 @@ class Main {
         // System.out.println("Invalid Choice");
         // }
         sc.close();
+    }
+
+    // Methods
+    static void writeToFile(String fileName, Portfolio portfolio) {
+        try {
+            String finalName = fileName + ".csv";
+            FileWriter writer = new FileWriter(finalName);
+            writer.write("TEST");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("ERROR");
+            e.printStackTrace();
+        }
     }
 
 }

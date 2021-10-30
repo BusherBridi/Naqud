@@ -47,6 +47,10 @@ public class Portfolio {
         return (netPay.get_amount());
     }
 
+    public float get_total() {
+        return (total);
+    }
+
     public ArrayList<Transaction> get_allTransactions() {
         return (transactions);
     }
@@ -80,6 +84,23 @@ public class Portfolio {
                         transaction.get_memo());
             }
         }
+    }
+
+    public void printCSV() {
+        StringBuilder csvHeader = new StringBuilder();
+        StringBuilder transactionHeader = new StringBuilder();
+        String headerFields[] = { "Month", "Total", "Transactions" };
+        for (String header : headerFields) {
+            csvHeader.append(header + ",");
+        }
+        csvHeader.append(",");
+        transactionHeader.append(",,");
+        for (Transaction transaction : transactions) {
+            transactionHeader.append(transaction.get_name() + ",");
+        }
+        transactionHeader.append(netPay.get_name());
+        // print values:
+
     }
 
     public void addTransaction(String name, float amount, String memo) {
