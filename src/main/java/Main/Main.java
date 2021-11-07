@@ -4,12 +4,13 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import com.github.freva.asciitable.AsciiTable;
 
 class Main {
 
     public static void main(String[] args) {
-
+        ArrayList<Portfolio> portfoliosInMemory = new ArrayList<Portfolio>();
         Scanner sc = new Scanner(System.in);
         Menu mainMenu = new Menu("Main Menu", 3);
         mainMenu.set_menuButtonTitle(0, "Set up");
@@ -26,6 +27,7 @@ class Main {
             case 1:
                 System.out.println("Set up");
                 Portfolio myPortfolio = Portfolio.userSetup(sc);
+                portfoliosInMemory.add(myPortfolio);
                 myPortfolio.print();
                 break;
             case 2:
@@ -33,6 +35,9 @@ class Main {
                 break;
             case 3:
                 System.out.println("View");
+                for(Portfolio portfolio : portfoliosInMemory){
+                    portfolio.print();
+                }
                 break;
             case 0:
                 System.out.println("Exit");
