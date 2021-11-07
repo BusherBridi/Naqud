@@ -1,3 +1,4 @@
+package Main;
 
 public class RecurringTransaction extends Transaction {
     private int recurrancePeriod;

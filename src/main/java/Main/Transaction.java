@@ -1,3 +1,4 @@
+package Main;
 
 public class Transaction {
     private float amount;

@@ -1,7 +1,10 @@
+package Main;
+
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import com.github.freva.asciitable.AsciiTable;
 
 class Main {
 
@@ -20,6 +23,13 @@ class Main {
         myPortfolio.addRecurringTransaction("Debt", -100, "memo", 1);
         System.out.printf("total expense: %f\n", myPortfolio.calculateFutureBalance(4));
         writeToFile("output", myPortfolio);
+        String[] headers = { "", "Name", "Diameter", "Mass", "Atmosphere" };
+        String[][] data = { { "1", "Mercury", "0.382", "0.06", "minimal" },
+                { "2", "Venus", "0.949", "0.82", "Carbon dioxide, Nitrogen" },
+                { "3", "Earth", "1.000", "1.00", "Nitrogen, Oxygen, Argon" },
+                { "4", "Mars", "0.532", "0.11", "Carbon dioxide, Nitrogen, Argon" } };
+
+        System.out.println(AsciiTable.getTable(headers, data));
         // PrettyTable table = new PrettyTable("Firstname", "Lastname", "Email",
         // "Phone");
         // table.addRow("John", "Doe", "johndoe@nothing.com", "+2137999999");
