@@ -1,11 +1,18 @@
 package Main;
 
 import java.util.Scanner;
+
+import javax.sound.sampled.Port;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import com.github.freva.asciitable.AsciiTable;
+import com.github.freva.asciitable.Column;
+
 
 class Main {
 
@@ -35,9 +42,7 @@ class Main {
                 break;
             case 3:
                 System.out.println("View");
-                for(Portfolio portfolio : portfoliosInMemory){
-                    portfolio.print();
-                }
+                    displayPortfolioToChoose(portfoliosInMemory);
                 break;
             case 0:
                 System.out.println("Exit");
@@ -62,6 +67,18 @@ class Main {
             System.out.println("ERROR");
             e.printStackTrace();
         }
+    }
+
+    static void displayPortfolioToChoose(ArrayList<Portfolio> portfolios){
+        //TODO: Please optimise this :(
+        List<Portfolio> portfoliosToDisplay = new ArrayList<>();
+        for(Portfolio portfolio:portfolios){
+            portfoliosToDisplay.add(portfolio);
+        }
+        System.out.println(AsciiTable.getTable(portfoliosToDisplay, Arrays.asList(
+            new Column().header("Name").with(Portfolio -> Portfolio.get_name()),
+            new Column().header("Description").with(Portfolio -> Portfolio.get_description())
+        )));
     }
 
 }
